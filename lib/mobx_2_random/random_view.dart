@@ -13,27 +13,26 @@ class RandoView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Mobx Random")),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Observer(builder: (_) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  textt(context, random.sayi1.toString()),
-                  textt(context, " + "),
-                  textt(context, random.sayi2.toString()),
-                ],
-              );
-            }),
-            const SizedBox(height: 20),
-            Observer(builder: (_) {
-              return TextButton(
-                  onPressed: random.sayilar,
-                  child: textt(context, random.toplam.toString()));
-            }),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Observer(builder: (_) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                textt(context, random.sayi1.toString()),
+                textt(context, " + "),
+                textt(context, random.sayi2.toString()),
+              ],
+            );
+          }),
+          const SizedBox(height: 20),
+          Observer(builder: (_) {
+            return TextButton(
+                onPressed: random.sayilar,
+                child: textt(context, random.toplam.toString()));
+          }),
+        ],
       ),
     );
   }
