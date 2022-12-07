@@ -26,6 +26,6 @@ class MyApp extends StatelessWidget {
               .copyWith(primary: Colors.purple, secondary: Colors.blueAccent),
         ),
         title: 'Get Started Mobx',
-        home: const CounterView());
+        home: CounterView());
   }
 }

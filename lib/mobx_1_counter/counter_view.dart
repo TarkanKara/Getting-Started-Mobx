@@ -1,7 +1,13 @@
+// ignore_for_file: unused_import, depend_on_referenced_packages
+
+import 'package:app_mobxx/mobx_1_counter/counter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class CounterView extends StatelessWidget {
-  const CounterView({super.key});
+  final Counter counter = Counter();
+
+  CounterView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +17,14 @@ class CounterView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "0",
-              style:
-                  Theme.of(context).textTheme.headline3!.copyWith(fontSize: 40),
+            Observer(
+              builder: (_) {
+                return Text(counter.counter.toString(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline3!
+                        .copyWith(fontSize: 40));
+              },
             )
           ],
         ),
@@ -23,12 +33,12 @@ class CounterView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: counter.increment,
             child: const Icon(Icons.add),
           ),
           const SizedBox(width: 10),
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: counter.decrement,
             child: const Icon(Icons.remove),
           )
         ],
