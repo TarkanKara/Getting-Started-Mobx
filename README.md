@@ -3,9 +3,10 @@
 📂lib
  │───main.dart  
  │───📂mobx_1_counter 
+ |   │──counter_view.dart
  |   │──counter.dart
  |   │──counter.g.dart
- |
+ 
 ```
 # [Mobx](https://mobx.netlify.app/getting-started/)
 * **Mobx** oluşturmak istediğiniz uygulamalar üzerinde, uygulamanızın **reaktif verilerini** UI (veya herhangi bir gözlemci) ile yönetimi kolaylaştıran bir state yönetim kütüphanesidir.
