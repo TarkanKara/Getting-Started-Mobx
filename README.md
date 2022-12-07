@@ -3,9 +3,13 @@
 📂lib
  │───main.dart  
  │───📂mobx_1_counter 
- |   │──counter_view.dart
  |   │──counter.dart
  |   │──counter.g.dart
+ |   │──counter_view.dart
+ │───📂mobx_2_random
+ |   │──random.dart
+ |   │──random.g.dart
+ |   │──random_view.dart
  
 ```
 # [Mobx](https://mobx.netlify.app/getting-started/)
