@@ -6,7 +6,6 @@
  |   │──counter.dart
  |   │──counter.g.dart
  |
-
 ```
 # [Mobx](https://mobx.netlify.app/getting-started/)
 * **Mobx** oluşturmak istediğiniz uygulamalar üzerinde, uygulamanızın **reaktif verilerini** UI (veya herhangi bir gözlemci) ile yönetimi kolaylaştıran bir state yönetim kütüphanesidir.
@@ -27,7 +26,7 @@
 ## Add a Store
 - Mobx ile birlikte öncelikle bir **store** oluşturmamız gerekiyor.
 - MobX'te store, ilgili **observable state** i tek bir sınıf altında toplamaya olayı
-- counter.dart adında bir dosya oluşturup, kurduğumuz eklenti sayesinde aşağıdaki kodları yazıyoruz.
+- **counter.dart** adında bir dosya oluşturup, kurduğumuz eklenti sayesinde aşağıdaki kodları yazıyoruz.
 
 ```dart
 class Counter = _CounterBase with _$Counter;
@@ -46,6 +45,7 @@ abstract class _CounterBase with Store {
 * **Reaktif** veri terimi, verilerdeki bir değişikliğin ilgili her gözlemciye bir bildirim gönderilmesine neden olduğu anlamına gelir.
 
 ## Mobx Core Concepts
+- Mobx in önemli temel 3 concepts var. **@Observables,** **@Actions** ve **@Reactions.**
 ### **@observable**
 - Gözlenebilirler, uygulamanızın reaktif durumunu temsil eder.
 - Değişkenler yaratmamıza olanak veriyor.
@@ -61,5 +61,55 @@ final counter = 0;
 //counter adında bir değişken ve değeri sıfır
 
 ```
+
+#### **@computed** observables
+- **Computed,** store’unuz içerisinde tanımladığınız bir **observable** bir değişken herhangi bir değişikliğe uğradığında devreye girip yaşamını başlatan değerlerdir. 
+
+```dart
+@observable
+String firstName;
+
+@observable
+String lastName;
+
+@computed
+String get fullName => '$firstName, $lastName';
+
+//firstName ve lastName değiştirildiğinde fullName otomatik olarak eşitlenir.
+
+```
+### **@actions**
+- **Action,** ugulamamız içerisinde istediğimiz yerden erişebileceğimiz fonksiyonlar olarak tanımlanabilir. 
+- Yani **observable** olarak tanımlanan değişkenleri değiştirmemizi sağlar.
+- Kullanım Senaryoları;
+
+```dart
+final counter = Observable(0);
+
+final increment = Action((){
+  counter.value++;
+});
+```
+- Veya değişken ve fonksiyonlar bu şekildede kullanılabilir;
+
+```dart
+import 'package:mobx/mobx.dart';
+part 'counter.g.dart';
+
+class Counter = CounterBase with _$Counter;
+
+abstract class CounterBase with Store {
+  @observable
+  int value = 0;
+
+  @action
+  void increment() {
+    value++;
+  }
+}
+```
+
+
+
 
 
