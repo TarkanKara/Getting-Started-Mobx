@@ -29,15 +29,16 @@ abstract class _UserViewModelBase with Store {
   Future<void> getAllUsers() async {
     //isRequest();
     pageStatus = PageStatus.LOADING;
+    try {
+      final response = await Dio().get(users_url);
 
-    final response = await Dio().get(users_url);
-
-    if (response.statusCode == HttpStatus.ok) {
-      //print(response.data);
-      final responseData = response.data as List;
-      users = responseData.map((e) => Users.fromJson(e)).toList();
-      pageStatus = PageStatus.SUCCESS;
-    } else {
+      if (response.statusCode == HttpStatus.ok) {
+        //print(response.data);
+        final responseData = response.data as List;
+        users = responseData.map((e) => Users.fromJson(e)).toList();
+        pageStatus = PageStatus.SUCCESS;
+      }
+    } catch (e) {
       pageStatus = PageStatus.ERROR;
     }
   }
