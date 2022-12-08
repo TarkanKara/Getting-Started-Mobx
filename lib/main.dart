@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'mobx_2_random/random_view.dart';
+import 'mobx_3_mvvm/view/users_view.dart';
 
 void main() => runApp(const MyApp());
 
@@ -27,6 +27,6 @@ class MyApp extends StatelessWidget {
               .copyWith(primary: Colors.purple, secondary: Colors.blueAccent),
         ),
         title: 'Get Started Mobx',
-        home: RandoView());
+        home: UsersView());
   }
 }
