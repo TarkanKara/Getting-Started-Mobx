@@ -83,6 +83,12 @@ String get fullName => '$firstName, $lastName';
 //firstName ve lastName değiştirildiğinde fullName otomatik olarak eşitlenir.
 
 ```
+:bangbang::bangbang:
+
+```dart
+//observable dinlenen, değişen bir değer
+//computed hesaplanan ve observable göre kendi hayatını çizen bir değer
+```
 ### **@actions**
 - **Action,** ugulamamız içerisinde istediğimiz yerden erişebileceğimiz fonksiyonlar olarak tanımlanabilir. 
 - Yani **observable** olarak tanımlanan değişkenleri değiştirmemizi sağlar.
