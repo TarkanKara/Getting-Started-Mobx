@@ -11,13 +11,13 @@
  |   │──random.g.dart
  |   │──random_view.dart
  │───📂mobx_3_mvvm
- |   │──📂model
- |   |   |──users.dart
- |   │──📂view
- |   |   |──users_view.dart
- |   │──📂view_model
- |   |   |──users_view_model.dart
- |   |   |──users_view_model.g.dart
+ |   │───📂model
+ |   |   |───users.dart
+ |   │───📂view
+ |   |   |───users_view.dart
+ |   │───📂view_model
+ |   |   |───users_view_model.dart
+ |   |   |───users_view_model.g.dart
  
 ```
 # [Mobx](https://mobx.netlify.app/getting-started/)
