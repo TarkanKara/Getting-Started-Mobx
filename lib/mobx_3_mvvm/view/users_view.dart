@@ -26,26 +26,40 @@ class UsersView extends StatelessWidget {
         }),
       ),
       body: Observer(builder: (_) {
-        return Center(
-          child: ListView.separated(
-            separatorBuilder: (context, index) => Container(
-                width: double.infinity, height: 1, color: Colors.pinkAccent),
-            itemCount: user.users.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(user.users[index].username.toString()),
-                subtitle: Text(user.users[index].email.toString()),
-                trailing: Text(user.users[index].phone.toString()),
-                leading: Text(user.users[index].id.toString()),
-              );
-            },
-          ),
-        );
+        switch (user.pageStatus) {
+          case PageStatus.FIRST:
+            return const Center(
+                child: Text("Users Listesi için Butuna Tıklayınız"));
+          case PageStatus.LOADING:
+            return const Center(child: CircularProgressIndicator());
+          case PageStatus.SUCCESS:
+            return buildListView();
+          case PageStatus.ERROR:
+            return const Center(child: Text("Error"));
+          default:
+            return Container();
+        }
       }),
       floatingActionButton: Observer(builder: (_) {
         return FloatingActionButton(
             onPressed: user.getAllUsers, child: const Icon(Icons.add));
       }),
+    );
+  }
+
+  ListView buildListView() {
+    return ListView.separated(
+      separatorBuilder: (context, index) => Container(
+          width: double.infinity, height: 1, color: Colors.pinkAccent),
+      itemCount: user.users.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(user.users[index].username.toString()),
+          subtitle: Text(user.users[index].email.toString()),
+          trailing: Text(user.users[index].phone.toString()),
+          leading: Text(user.users[index].id.toString()),
+        );
+      },
     );
   }
 }

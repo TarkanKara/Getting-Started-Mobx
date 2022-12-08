@@ -9,6 +9,22 @@ part of 'users_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$UserViewModel on _UserViewModelBase, Store {
+  late final _$pageStatusAtom =
+      Atom(name: '_UserViewModelBase.pageStatus', context: context);
+
+  @override
+  PageStatus get pageStatus {
+    _$pageStatusAtom.reportRead();
+    return super.pageStatus;
+  }
+
+  @override
+  set pageStatus(PageStatus value) {
+    _$pageStatusAtom.reportWrite(value, super.pageStatus, () {
+      super.pageStatus = value;
+    });
+  }
+
   late final _$usersAtom =
       Atom(name: '_UserViewModelBase.users', context: context);
 
@@ -66,6 +82,7 @@ mixin _$UserViewModel on _UserViewModelBase, Store {
   @override
   String toString() {
     return '''
+pageStatus: ${pageStatus},
 users: ${users},
 isLoading: ${isLoading}
     ''';
